@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>VirtualPrinter.Service</RootNamespace>
+    <AssemblyName>VirtualPrinterService</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <ApplicationIcon>..\..\assets\printer.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <ProjectReference Include="..\VPGhostLib\VPGhostLib.csproj" />
+  </ItemGroup>
+</Project>

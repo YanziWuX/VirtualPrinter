@@ -1,0 +1,48 @@
+#pragma once
+#include <windows.h>
+#include <winspool.h>
+
+typedef struct _MONITORINIT {
+    DWORD  cbSize;
+    HANDLE hMonitor;
+    HANDLE hSpooler;
+    HANDLE hckRegistry;
+} MONITORINIT, * PMONITORINIT;
+
+typedef struct _MONITOR2 {
+    DWORD cbSize;
+    BOOL(WINAPI* pfnEnumPorts)(HANDLE, LPWSTR, DWORD, LPBYTE, DWORD, LPDWORD, LPDWORD);
+    BOOL(WINAPI* pfnOpenPort)(HANDLE, LPWSTR, PHANDLE);
+    BOOL(WINAPI* pfnOpenPortEx)(HANDLE, HANDLE, LPWSTR, LPWSTR, PHANDLE, struct _MONITOR2 FAR*);
+    BOOL(WINAPI* pfnStartDocPort)(HANDLE, LPWSTR, DWORD, DWORD, LPBYTE);
+    BOOL(WINAPI* pfnWritePort)(HANDLE, LPBYTE, DWORD, LPDWORD);
+    BOOL(WINAPI* pfnReadPort)(HANDLE, LPBYTE, DWORD, LPDWORD);
+    BOOL(WINAPI* pfnEndDocPort)(HANDLE);
+    BOOL(WINAPI* pfnClosePort)(HANDLE);
+    BOOL(WINAPI* pfnAddPort)(HANDLE, LPWSTR, HWND, LPWSTR);
+    BOOL(WINAPI* pfnAddPortEx)(HANDLE, LPWSTR, DWORD, LPBYTE, LPWSTR);
+    BOOL(WINAPI* pfnConfigurePort)(HANDLE, LPWSTR, HWND, LPWSTR);
+    BOOL(WINAPI* pfnDeletePort)(HANDLE, LPWSTR, HWND, LPWSTR);
+    BOOL(WINAPI* pfnGetPrinterDataFromPort)(HANDLE, DWORD, LPWSTR, LPWSTR, DWORD, LPWSTR, DWORD, LPDWORD);
+    BOOL(WINAPI* pfnSetPortTimeOuts)(HANDLE, LPCOMMTIMEOUTS, DWORD);
+    BOOL(WINAPI* pfnXcvOpenPort)(HANDLE, LPCWSTR, ACCESS_MASK, PHANDLE);
+    DWORD(WINAPI* pfnXcvDataPort)(HANDLE, LPCWSTR, LPBYTE, DWORD, LPBYTE, DWORD, LPDWORD);
+    BOOL(WINAPI* pfnXcvClosePort)(HANDLE);
+    VOID(WINAPI* pfnShutdown)(HANDLE);
+    DWORD(WINAPI* pfnSendRecvBidiDataFromPort)(HANDLE, DWORD, LPCWSTR, PVOID, PVOID*);
+    DWORD(WINAPI* pfnNotifyUsedPorts)(HANDLE, DWORD, PCWSTR*);
+    DWORD(WINAPI* pfnNotifyUnusedPorts)(HANDLE, DWORD, PCWSTR*);
+    DWORD(WINAPI* pfnPowerEvent)(HANDLE, DWORD, PVOID);
+} MONITOR2, * PMONITOR2;
+
+typedef struct _MONITORUI {
+    DWORD dwMonitorUISize;
+    BOOL(WINAPI* pfnAddPortUI)(PCWSTR, HWND, PCWSTR, PWSTR*);
+    BOOL(WINAPI* pfnConfigurePortUI)(PCWSTR, HWND, PCWSTR);
+    BOOL(WINAPI* pfnDeletePortUI)(PCWSTR, HWND, PCWSTR);
+} MONITORUI, * PMONITORUI;
+
+void DbgTrace(const wchar_t* fmt, ...);
+
+PMONITOR2 WINAPI GetMonitor2(void);
+PMONITORUI WINAPI GetMonitorUI(void);

@@ -1,0 +1,69 @@
+[Version]
+Signature="$Windows NT$"
+Class=Printer
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Provider="VirtualPrinter"
+DriverVer=06/21/2006,1.0.0.0
+
+[Manufacturer]
+"VirtualPrinter" = VirtualPrinter.NTAMD64
+
+[VirtualPrinter.NTAMD64]
+"VirtualPrinter PS Driver" = VIRTUALPRINTER_PS, vpps.ppd
+
+[VIRTUALPRINTER_PS]
+CopyFiles=VP_PS_FILES
+
+[VP_PS_FILES]
+vpps.ppd
+PSCRIPT5.DLL
+PS5UI.DLL
+PSCRIPT.HLP
+PSCRIPT.NTF
+PSCRPTFE.NTF
+UNIDRV.DLL
+UNIDRV.HLP
+UNIDRVUI.DLL
+UNIRES.DLL
+LOCALE.GPD
+PS_SCHM.GDL
+STDDTYPE.GDL
+STDNAMES.GPD
+STDSCHEM.GDL
+STDSCHMX.GDL
+TTFSUB.GPD
+
+[VIRTUALPRINTER_PS.Data]
+DriverFile=PSCRIPT5.DLL
+ConfigFile=PS5UI.DLL
+DataFile=vpps.ppd
+HelpFile=PSCRIPT.HLP
+
+[DestinationDirs]
+DefaultDestDir=66000
+VP_PS_FILES=66000
+
+[SourceDisksNames.amd64]
+1 = "VirtualPrinter Driver Disk", "", "amd64"
+
+[SourceDisksFiles.amd64]
+vpps.ppd = 1
+PSCRIPT5.DLL = 1
+PS5UI.DLL = 1
+PSCRIPT.HLP = 1
+PSCRIPT.NTF = 1
+PSCRPTFE.NTF = 1
+UNIDRV.DLL = 1
+UNIDRV.HLP = 1
+UNIDRVUI.DLL = 1
+UNIRES.DLL = 1
+LOCALE.GPD = 1
+PS_SCHM.GDL = 1
+STDDTYPE.GDL = 1
+STDNAMES.GPD = 1
+STDSCHEM.GDL = 1
+STDSCHMX.GDL = 1
+TTFSUB.GPD = 1
+
+[Strings]
+DiskName="VirtualPrinter Installation Disk"

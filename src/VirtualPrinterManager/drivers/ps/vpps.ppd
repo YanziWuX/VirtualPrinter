@@ -1,0 +1,57 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Manufacturer: "VirtualPrinter"
+*Product: "(Virtual Printer)"
+*PSVersion: "(3018.101) 0"
+*ModelName: "VirtualPrinter PostScript"
+*ShortNickName: "VirtualPrinter PS"
+*NickName: "VirtualPrinter PostScript 3018"
+
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: True
+*FreeVM: "4194304"
+*VariablePaperSize: True
+*Throughput: "400"
+
+*% Standard resolution
+*OpenUI *Resolution: PickOne
+*DefaultResolution: 600dpi
+*Resolution 600dpi: "<< /HWResolution [600 600] >>setpagedevice"
+*Resolution 1200dpi: "<< /HWResolution [1200 1200] >>setpagedevice"
+*CloseUI: *Resolution
+
+*% Page sizes
+*OpenUI *PageSize: PickOne
+*DefaultPageSize: A4
+*PageSize A4: "0 0 595 842"
+*PageSize Letter: "0 0 612 792"
+*PageSize A3: "0 0 842 1191"
+*CloseUI: *PageSize
+
+*% Color model
+*OpenUI *ColorModel: PickOne
+*DefaultColorModel: RGB
+*ColorModel RGB/Color (RGB): "<< /ProcessColorModel /DeviceRGB >>setpagedevice"
+*ColorModel CMYK/Color (CMYK): "<< /ProcessColorModel /DeviceCMYK >>setpagedevice"
+*ColorModel Gray/Grayscale: "<< /ProcessColorModel /DeviceGray >>setpagedevice"
+*CloseUI: *ColorModel
+
+*% Input slots
+*OpenUI *InputSlot: PickOne
+*DefaultInputSlot: Default
+*InputSlot Default/Default: ""
+*CloseUI: *InputSlot
+
+*% Output Bin
+*OpenUI *OutputBin: PickOne
+*DefaultOutputBin: Default
+*OutputBin Default/Default: ""
+*CloseUI: *OutputBin
+
+*% Default font
+*DefaultFont: Courier

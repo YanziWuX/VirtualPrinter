@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>VirtualPrinter.SaveDialog</RootNamespace>
+    <AssemblyName>VirtualPrinterSaveDialog</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\..\assets\printer.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <!-- JSON handled via manual serializer -->
+    <ProjectReference Include="..\VPGhostLib\VPGhostLib.csproj" />
+  </ItemGroup>
+</Project>

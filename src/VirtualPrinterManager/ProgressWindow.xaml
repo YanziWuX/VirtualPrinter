@@ -1,0 +1,25 @@
+<Window x:Class="VirtualPrinter.Manager.ProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="安装进度" Width="400" Height="110" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" WindowStyle="None"
+        ShowInTaskbar="False" AllowsTransparency="True"
+        Background="Transparent" Closing="OnClosing">
+    <Border Background="{StaticResource WhiteBrush}"
+            BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+            CornerRadius="8" Padding="20">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="16" Opacity="0.06" ShadowDepth="3" Color="#000000"/>
+        </Border.Effect>
+        <StackPanel>
+            <TextBlock x:Name="StatusText" Text="正在准备..."
+                       FontFamily="{StaticResource BodyFont}" FontSize="13"
+                       Foreground="{StaticResource InkBrush}"
+                       Margin="0,0,0,10"/>
+            <ProgressBar IsIndeterminate="True" Height="4"
+                         Background="{StaticResource PaperBrush}"
+                         BorderThickness="0"
+                         Foreground="{StaticResource RedBrush}"/>
+        </StackPanel>
+    </Border>
+</Window>

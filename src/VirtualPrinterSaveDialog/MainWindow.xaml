@@ -1,0 +1,221 @@
+<Window x:Class="VirtualPrinter.SaveDialog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VirtualPrinter — 保存打印输出"
+        Width="560" Height="620" MinWidth="480" MinHeight="480"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True" ResizeMode="CanResize" ShowInTaskbar="True"
+        FontFamily="{StaticResource BodyFont}"
+        Background="{StaticResource PaperBrush}"
+        Foreground="{StaticResource InkBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" BorderThickness="0">
+            <StackPanel Margin="24,20,24,0">
+
+                <!-- Document header -->
+                <Grid Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+<Border Grid.Column="0" Width="38" Height="38"
+        Background="{StaticResource RedBrush}" CornerRadius="6" Margin="0,0,12,0">
+                        <TextBlock Text="P" FontFamily="{StaticResource DisplayFont}"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="White" HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock FontSize="15" FontWeight="SemiBold"
+                                   Text="{Binding DocumentName, FallbackValue='文档名称'}"/>
+                        <TextBlock FontSize="11" Foreground="{StaticResource MonoBrush}"
+                                   Text="{Binding PrintTime, FallbackValue='打印于: 2026-01-01 12:00'}"
+                                   Margin="0,1,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Output Format -->
+                <Border Style="{StaticResource Card}" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="输出格式" Style="{StaticResource SectionTitle}"/>
+                        <Separator Style="{StaticResource Hairline}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ComboBox Grid.Row="0" Grid.Column="0" MinWidth="120"
+                                      ItemsSource="{Binding Formats}"
+                                      SelectedItem="{Binding SelectedFormat}"
+                                      DisplayMemberPath="Name"
+                                      IsSynchronizedWithCurrentItem="False"
+                                      SelectionChanged="OnFormatChanged"/>
+                            <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"
+                                       Style="{StaticResource TagLabel}">颜色:</TextBlock>
+                            <ComboBox Grid.Row="0" Grid.Column="3" MinWidth="95"
+                                      ItemsSource="{Binding ColorModes}"
+                                      SelectedItem="{Binding SelectedColorMode}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="5" VerticalAlignment="Center"
+                                       Style="{StaticResource TagLabel}">DPI:</TextBlock>
+                            <TextBox Grid.Row="0" Grid.Column="6"
+                                     Text="{Binding Resolution}"
+                                     MinWidth="65" Height="32" Padding="6,2"/>
+                            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="8"
+                                    Content="高级设置…" Style="{StaticResource BtnSecondary}"
+                                    Height="30" Margin="0,8,0,0"
+                                    HorizontalAlignment="Left" Padding="12,0"
+                                    Click="OnAdvancedSettings"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Multi-page -->
+                <Border Style="{StaticResource Card}" Margin="0,0,0,10"
+                        x:Name="MultiPageGroup">
+                    <StackPanel>
+                        <TextBlock Text="多页处理" Style="{StaticResource SectionTitle}"/>
+                        <Separator Style="{StaticResource Hairline}"/>
+                        <RadioButton x:Name="RadioPdfMerge" Content="PDF: 合并为单文件"
+                                     GroupName="MultiPage" Checked="OnPdfMergeChecked"/>
+                        <StackPanel x:Name="ImagePageOptions" Margin="0,4,0,0">
+                            <RadioButton x:Name="RadioImagePerPage" Content="每页单独文件"
+                                         GroupName="MultiPage" Checked="OnImagePerPageChecked"/>
+                            <RadioButton x:Name="RadioImageMerge" Content="合并为单文件"
+                                         GroupName="MultiPage" Checked="OnImageMergeChecked"
+                                         Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- File name & path -->
+                <Border Style="{StaticResource Card}" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="文件名和保存位置" Style="{StaticResource SectionTitle}"/>
+                        <Separator Style="{StaticResource Hairline}"/>
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="文件名"
+                                       Style="{StaticResource TagLabel}"/>
+                            <Grid Grid.Column="1" Margin="8,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" Text="{Binding FileName}"/>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding FileExtension, StringFormat='.{0}'}"
+                                           VerticalAlignment="Center" Margin="6,0,0,0"
+                                           Foreground="{StaticResource MonoBrush}"/>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="位置"
+                                       Style="{StaticResource TagLabel}"/>
+                            <TextBox Grid.Column="1" Text="{Binding SaveFolder}"
+                                     IsReadOnly="True" Margin="8,0,0,0"/>
+                            <Button Grid.Column="2" Content="浏览…"
+                                    Style="{StaticResource BtnSecondary}"
+                                    Height="30" Padding="12,0" Margin="8,0,0,0"
+                                    Click="OnBrowseFolder"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Watermark -->
+                <Border Style="{StaticResource Card}" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="水印" Style="{StaticResource SectionTitle}"/>
+                        <Separator Style="{StaticResource Hairline}"/>
+                        <CheckBox Content="启用水印" IsChecked="{Binding EnableWatermark}"
+                                  Margin="0,0,0,6"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="文字"
+                                       Style="{StaticResource TagLabel}" Margin="0,0,12,6"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding WatermarkText}"
+                                     Margin="0,0,0,6"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="位置"
+                                       Style="{StaticResource TagLabel}" Margin="0,0,12,6"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1"
+                                      ItemsSource="{Binding WatermarkPositions}"
+                                      SelectedItem="{Binding WatermarkPosition}"
+                                      Margin="0,0,0,6"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="透明度"
+                                       Style="{StaticResource TagLabel}" Margin="0,0,12,0"/>
+                            <Grid Grid.Row="2" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Slider Grid.Column="0" Minimum="0" Maximum="100"
+                                        Value="{Binding WatermarkOpacity}"
+                                        IsSnapToTickEnabled="True" TickFrequency="5"/>
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding WatermarkOpacity, StringFormat='{}{0}%'}"
+                                           Margin="10,0,0,0" VerticalAlignment="Center"
+                                           MinWidth="36"
+                                           Foreground="{StaticResource MonoBrush}"/>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Options -->
+                <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                    <StackPanel>
+                        <CheckBox Content="打印后打开输出文件夹"
+                                  IsChecked="{Binding OpenFolderAfterPrint}"/>
+                        <CheckBox x:Name="ShowSuccessMsgBox" Content="打印成功提示"
+                                  IsChecked="True" Margin="0,6,0,0"/>
+                        <CheckBox Content="记住这些设置"
+                                  IsChecked="{Binding RememberSettings}" Margin="0,6,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Bottom bar -->
+        <Border Grid.Row="1" Background="{StaticResource WhiteBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0"
+                Padding="24,14">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="打印" Style="{StaticResource BtnPrimary}" Width="110"
+                        IsDefault="True" Click="OnPrint"/>
+                <Button Content="取消" Style="{StaticResource BtnSecondary}" Width="110"
+                        Margin="12,0,0,0" IsCancel="True" Click="OnCancel"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
