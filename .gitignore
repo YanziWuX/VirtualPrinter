@@ -66,17 +66,8 @@ GPlus_PS3_Driver_V340_W64_00/
 HP_Universal_Printing_PSx64/
 gs10060w64/
 
-## Test data (driver packages, extracted files, output files, logs)
-tests/CanonMiniDriver/
-tests/HPMiniCore/
-tests/HPMiniDriver/
-tests/GsTest/
-tests/TestPipeServer/
-tests/TestPipeline/
-tests/RedmonRedirector_build/
-tests/VPPostScriptMon_build/
-tests/_mftmp.hex
-tests/_xcv.log
+## Test data, scripts, and outputs
+tests/
 
 ## Generated embedded resource (rebuilt by build.bat step 6/7)
 src/VirtualPrinterLauncher/Resources/bundle.zip
