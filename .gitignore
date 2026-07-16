@@ -1,0 +1,82 @@
+## Build outputs
+build/
+dist/
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.lib
+*.exp
+*.so
+*.dylib
+
+## Visual Studio
+.vs/
+*.sln.ide/
+*.user
+*.suo
+*.cache
+*.db
+*.db-shm
+*.db-wal
+
+## .NET
+**/bin/
+**/obj/
+*.nupkg
+project.assets.json
+
+## CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+## IDE
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+## Inno Setup
+installer\*.exe
+installer\*.log
+
+## Ghostscript lib
+lib/gs/gsdll*.dll
+lib/gs/gswin*.exe
+lib/vc_redist*.exe
+
+## Auto-generated
+src/VirtualPrinterManager/VersionInfo.cs
+
+## Session logs
+session-*.md
+
+## Local scripts/tools
+qc
+test_output/
+
+## Third-party source packages (not used in build)
+GPlus_PS3_Driver_V340_W64_00/
+HP_Universal_Printing_PSx64/
+gs10060w64/
+
+## Test data (driver packages, extracted files, output files, logs)
+tests/CanonMiniDriver/
+tests/HPMiniCore/
+tests/HPMiniDriver/
+tests/GsTest/
+tests/TestPipeServer/
+tests/TestPipeline/
+tests/RedmonRedirector_build/
+tests/VPPostScriptMon_build/
+tests/_mftmp.hex
+tests/_xcv.log
+
+## Generated embedded resource (rebuilt by build.bat step 6/7)
+src/VirtualPrinterLauncher/Resources/bundle.zip

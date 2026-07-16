@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>VirtualPrinter.Launcher</RootNamespace>
+    <AssemblyName>VirtualPrinterLauncher</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>..\..\assets\printer.ico</ApplicationIcon>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <EmbeddedResource Include="Resources\bundle.zip">
+      <LogicalName>bundle.zip</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

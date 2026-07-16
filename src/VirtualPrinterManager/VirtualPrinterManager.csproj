@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>VirtualPrinter.Manager</RootNamespace>
+    <AssemblyName>VirtualPrinterManager</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\..\assets\printer.ico</ApplicationIcon>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+</Project>

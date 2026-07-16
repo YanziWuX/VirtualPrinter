@@ -1,0 +1,27 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VPPostScriptMon", "src\VPPostScriptMon\CMakeLists.txt", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPGhostLib", "src\VPGhostLib\VPGhostLib.csproj", "{B2C3D4E5-F6A7-8901-BCDE-F12345678901}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPrinterService", "src\VirtualPrinterService\VirtualPrinterService.csproj", "{C3D4E5F6-A7B8-9012-CDEF-123456789012}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPrinterSaveDialog", "src\VirtualPrinterSaveDialog\VirtualPrinterSaveDialog.csproj", "{D4E5F6A7-B8C9-0123-DEF1-234567890123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPrinterManager", "src\VirtualPrinterManager\VirtualPrinterManager.csproj", "{E5F6A7B8-C9D0-1234-EF12-345678901234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPrinterLauncher", "src\VirtualPrinterLauncher\VirtualPrinterLauncher.csproj", "{F7A8B9C0-D1E2-3456-F234-567890123456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualPrinter.Tests", "src\VirtualPrinter.Tests\VirtualPrinter.Tests.csproj", "{8E298B33-8572-43DB-BE4D-EA2183B65132}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EnvChecker", "installer\components\CMakeLists.txt", "{F6A7B8C9-D0E1-2345-F123-456789012345}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+EndGlobal

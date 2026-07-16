@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Platforms>x64</Platforms>
+    <RootNamespace>VirtualPrinter.GhostLib</RootNamespace>
+    <AssemblyName>VPGhostLib</AssemblyName>
+    <LangVersion>8.0</LangVersion>
+    <Description>VirtualPrinter Ghostscript wrapper library</Description>
+  </PropertyGroup>
+</Project>

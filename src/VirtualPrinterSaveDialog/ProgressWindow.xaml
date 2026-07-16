@@ -1,0 +1,25 @@
+<Window x:Class="VirtualPrinter.SaveDialog.ProgressWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="VirtualPrinter"
+        Width="360" Height="140"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize" WindowStyle="None"
+        ShowInTaskbar="False" Topmost="True"
+        Background="{StaticResource PaperBrush}"
+        Foreground="{StaticResource InkBrush}">
+    <Border CornerRadius="8" BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1" Background="{StaticResource WhiteBrush}"
+            Margin="0">
+        <StackPanel Margin="24,20" VerticalAlignment="Center">
+            <TextBlock x:Name="StatusText" Text="正在准备文件..."
+                       FontFamily="{StaticResource BodyFont}"
+                       FontSize="14" HorizontalAlignment="Center"
+                       Margin="0,0,0,16"/>
+            <ProgressBar IsIndeterminate="True" Height="6"
+                         Background="{StaticResource PaperBrush}"
+                         Foreground="{StaticResource RedBrush}"
+                         BorderThickness="0"/>
+        </StackPanel>
+    </Border>
+</Window>
